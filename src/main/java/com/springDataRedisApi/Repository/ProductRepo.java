@@ -2,6 +2,7 @@ package com.springDataRedisApi.Repository;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,8 @@ import com.springDataRedisApi.Entity.Product;
 @Repository
 public class ProductRepo {
 	private static final String HASH_KEY = "product";
+	
+	@Autowired
 	private RedisTemplate template;
 	
 	public Product save(Product product) {
@@ -29,7 +32,7 @@ public class ProductRepo {
 	}
 	
 	public Product findProductById(Long id) {
-		return (Product) template.opsForHash().get(HASH_KEY, id);
+		return (Product)template.opsForHash().get(HASH_KEY, id);
 	}
 
 	public String deleteProduct(Long id) {

@@ -1,5 +1,7 @@
 package com.springDataRedisApi.Entity;
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -9,7 +11,8 @@ import org.springframework.data.redis.core.RedisHash;
  * @since 2020
  */
 @RedisHash("product")
-public class Product {
+public class Product implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	private Long id;
 	private String name;
